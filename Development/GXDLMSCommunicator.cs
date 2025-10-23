@@ -879,12 +879,12 @@ namespace GXDLMSDirector
                     }
                     if (serial != null)
                     {
-                        media.Close();
+                        //media.Close();     // 这里关闭串口，没有延时，马上又打开，如果是蓝牙串口，则打开串口会失败，应该延时一段时间，例如200ms
                         serial.BaudRate = BaudRate;
                         serial.DataBits = 8;
                         serial.Parity = Parity.None;
                         serial.StopBits = StopBits.One;
-                        media.Open();
+                        //media.Open();       // when open serial port, the baud rate is not set
                     }
                     //Some meters need this sleep. Do not remove.
                     Thread.Sleep(1000);
